@@ -14,6 +14,7 @@ namespace ProjectM.PL
     public partial class Depenses_mensuelles : MaterialForm
     {
         BL.CLS_Depense dep = new BL.CLS_Depense();
+        BL.Immobilisation immo = new BL.Immobilisation();
         public Depenses_mensuelles()
         {
             InitializeComponent();
@@ -38,7 +39,14 @@ namespace ProjectM.PL
 
         private void Btn_Sub_Immo_Click(object sender, EventArgs e)
         {
-
+            if (cb_New_Immo.Checked)
+            {
+                immo.AddImmo(Convert.ToInt32(txtN_Immo.Text), txt_Desc.Text, dp_Immo.Value);
+            }
+            immo.AddImmoDet(Convert.ToInt32(txtN_Immo.Text), Convert.ToDouble(txtPrix_Immo.Text));
+            txtPrix_Immo.Clear();
+            txt_Desc.Clear();
+            MessageBox.Show("Votre opération est effactuer", "Ajouter", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void Btn_Sub_Dep_Click(object sender, EventArgs e)

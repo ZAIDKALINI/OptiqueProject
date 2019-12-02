@@ -119,7 +119,7 @@
             // btn_Sub_Immo
             // 
             this.btn_Sub_Immo.Depth = 0;
-            this.btn_Sub_Immo.Location = new System.Drawing.Point(175, 297);
+            this.btn_Sub_Immo.Location = new System.Drawing.Point(186, 297);
             this.btn_Sub_Immo.MouseState = MaterialSkin.MouseState.HOVER;
             this.btn_Sub_Immo.Name = "btn_Sub_Immo";
             this.btn_Sub_Immo.Primary = true;
