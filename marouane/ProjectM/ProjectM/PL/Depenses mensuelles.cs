@@ -28,6 +28,11 @@ namespace ProjectM.PL
                 cb_Choix_Dep.DisplayMember = "Lebelle";
                 cb_Choix_Dep.ValueMember = "Id_dep";
                 txtN_Dep.Text = cb_Choix_Dep.SelectedValue.ToString();
+                ///
+                cb_Choix.DataSource = immo.GetImmo();
+                cb_Choix.DisplayMember = "Lebelle";
+                cb_Choix.ValueMember = "NumImm";
+                txtN_Immo.Text = cb_Choix_Dep.SelectedValue.ToString();
             }
             catch(Exception e)
             {

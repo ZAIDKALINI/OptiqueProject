@@ -37,7 +37,7 @@ namespace ProjectM.BL
             param[0] = new SqlParameter("@Num_Imm", Num_Imm);
             param[1] = new SqlParameter("@Prix", Prix);
             
-            data.ExcuteCommand("AddImmo", param);
+            data.ExcuteCommand("AddImmoDet", param);
 
         }
         /// <summary>
