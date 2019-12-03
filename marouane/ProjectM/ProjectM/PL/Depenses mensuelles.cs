@@ -31,12 +31,12 @@ namespace ProjectM.PL
                 ///
                 cb_Choix.DataSource = immo.GetImmo();
                 cb_Choix.DisplayMember = "Lebelle";
-                cb_Choix.ValueMember = "NumImm";
-                txtN_Immo.Text = cb_Choix_Dep.SelectedValue.ToString();
+                cb_Choix.ValueMember = "Num_Imm";
+                txtN_Immo.Text = cb_Choix.SelectedValue.ToString();
             }
-            catch(Exception e)
+            catch
             {
-                MessageBox.Show(e.Message);
+                return;
             }
         }
 
@@ -44,58 +44,96 @@ namespace ProjectM.PL
 
         private void Btn_Sub_Immo_Click(object sender, EventArgs e)
         {
-            if (cb_New_Immo.Checked)
+            try
             {
-                immo.AddImmo(Convert.ToInt32(txtN_Immo.Text), txt_Desc.Text, dp_Immo.Value);
+                if (cb_New_Immo.Checked)
+                {
+                    immo.AddImmo(Convert.ToInt32(txtN_Immo.Text), txt_Desc.Text, dp_Immo.Value);
+                }
+                immo.AddImmoDet(Convert.ToInt32(txtN_Immo.Text), Convert.ToDouble(txtPrix_Immo.Text));
+                txtPrix_Immo.Clear();
+                txt_Desc.Clear();
+                cb_New_Immo.Checked = false;
+                MessageBox.Show("Votre opération est effactuer", "Ajouter", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            immo.AddImmoDet(Convert.ToInt32(txtN_Immo.Text), Convert.ToDouble(txtPrix_Immo.Text));
-            txtPrix_Immo.Clear();
-            txt_Desc.Clear();
-            MessageBox.Show("Votre opération est effactuer", "Ajouter", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            catch
+            {
+                return;
+            }
+           
         }
 
         private void Btn_Sub_Dep_Click(object sender, EventArgs e)
         {
-            if (Cb_New_Dep.Checked)
+            try
             {
-                dep.AddDep(Convert.ToInt32(txtN_Dep.Text), txt_Desc_Dep.Text, dp_Dep.Value);
+                if (Cb_New_Dep.Checked)
+                {
+                    dep.AddDep(Convert.ToInt32(txtN_Dep.Text), txt_Desc_Dep.Text, dp_Dep.Value);
+                }
+                dep.AddDepDet(Convert.ToInt32(txtN_Dep.Text), Convert.ToDouble(txt_Prix_Dep.Text));
+                txt_Prix_Dep.Clear();
+                txt_Desc_Dep.Clear();
+                MessageBox.Show("Votre opération est effactuer", "Ajouter", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Cb_New_Dep.Checked = false;
             }
-            dep.AddDepDet(Convert.ToInt32(txtN_Dep.Text), Convert.ToDouble(txt_Prix_Dep.Text));
-            txt_Prix_Dep.Clear();
-            txt_Desc_Dep.Clear();
-            MessageBox.Show("Votre opération est effactuer", "Ajouter", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            catch
+            {
+                return;
+            }
+           
         }
 
         private void Cb_New_Dep_CheckedChanged(object sender, EventArgs e)
         {
-            if (Cb_New_Dep.Checked)
+            try
             {
-                txt_Desc_Dep.Enabled = true;
-                txtN_Dep.Enabled = true;
-                cb_Choix_Dep.Enabled = false;
-                txtN_Dep.Text = dep.GetIdDep().Rows[0][0].ToString();
+                if (Cb_New_Dep.Checked)
+                {
+                    txt_Desc_Dep.Enabled = true;
+                    txtN_Dep.Enabled = true;
+                    cb_Choix_Dep.Enabled = false;
+                    txtN_Dep.Text = dep.GetIdDep().Rows[0][0].ToString();
+                }
+                else
+                {
+                    txt_Desc_Dep.Enabled = false;
+                    txtN_Dep.Enabled = false;
+                    cb_Choix_Dep.Enabled = true;
+                    txtN_Dep.Text = cb_Choix_Dep.SelectedValue.ToString();
+                }
             }
-            else
+            catch
             {
-                txt_Desc_Dep.Enabled = false;
-                txtN_Dep.Enabled = false;
-                cb_Choix_Dep.Enabled = true;
-                txtN_Dep.Text = cb_Choix_Dep.SelectedValue.ToString();
+                return;
             }
+         
         }
 
         private void Cb_New_Immo_CheckedChanged(object sender, EventArgs e)
         {
-            if (cb_New_Immo.Checked)
+            try
             {
-                txtN_Immo.Enabled = true;
-                txt_Desc.Enabled = true;
+                if (cb_New_Immo.Checked)
+                {
+                    txtN_Immo.Enabled = true;
+                    txt_Desc.Enabled = true;
+                    cb_Choix.Enabled = false;
+                    txtN_Immo.Text = immo.GetIdImmo().Rows[0][0].ToString();
+                }
+                else
+                {
+                    txtN_Immo.Enabled = false;
+                    txt_Desc.Enabled = false;
+                    cb_Choix.Enabled = true;
+                    txtN_Immo.Text = cb_Choix.SelectedValue.ToString();
+                }
             }
-            else
+            catch
             {
-                txtN_Immo.Enabled = false;
-                txt_Desc.Enabled = false;
+                return;
             }
+         
            
         }
 
@@ -106,7 +144,26 @@ namespace ProjectM.PL
 
         private void Cb_Choix_Dep_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtN_Dep.Text = cb_Choix_Dep.SelectedValue.ToString();
+            try
+            {
+                txtN_Dep.Text = cb_Choix_Dep.SelectedValue.ToString();
+            }
+            catch
+            {
+                return;
+            }
+        }
+
+        private void Cb_Choix_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                txtN_Immo.Text = cb_Choix.SelectedValue.ToString();
+            }
+            catch
+            {
+                return;
+            }
         }
     }
 }
