@@ -24,18 +24,31 @@ namespace ProjectM.PL
             txtN_Dep.Enabled = false;
             try
             {
-                cb_Choix_Dep.DataSource = dep.GetAllDep();
-                cb_Choix_Dep.DisplayMember = "Lebelle";
-                cb_Choix_Dep.ValueMember = "Id_dep";
-                txtN_Dep.Text = cb_Choix_Dep.SelectedValue.ToString();
+                dgvViewImmo.DataSource = immo.GetViewImmoForMonth();
+                //
+                if (dep.GetAllDep().Rows.Count != 0)
+                {
+                    cb_Choix_Dep.DataSource = dep.GetAllDep();
+                    cb_Choix_Dep.DisplayMember = "Lebelle";
+                    cb_Choix_Dep.ValueMember = "Id_dep";
+                    txtN_Dep.Text = cb_Choix_Dep.SelectedValue.ToString();
+                }
+
+
                 ///
-                cb_Choix.DataSource = immo.GetImmo();
-                cb_Choix.DisplayMember = "Lebelle";
-                cb_Choix.ValueMember = "Num_Imm";
-                txtN_Immo.Text = cb_Choix.SelectedValue.ToString();
+                if (immo.GetImmo() != null)
+                {
+                    cb_Choix.DataSource = immo.GetImmo();
+                    cb_Choix.DisplayMember = "Lebelle";
+                    cb_Choix.ValueMember = "Num_Imm";
+                    txtN_Immo.Text = cb_Choix.SelectedValue.ToString();
+                }
+               
+                
             }
-            catch
+            catch(Exception e)
             {
+                MessageBox.Show(e.Message);
                 return;
             }
         }
@@ -55,6 +68,7 @@ namespace ProjectM.PL
                 txt_Desc.Clear();
                 cb_New_Immo.Checked = false;
                 MessageBox.Show("Votre opération est effactuer", "Ajouter", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dgvViewImmo.DataSource = immo.GetViewImmoForMonth();
             }
             catch
             {

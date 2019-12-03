@@ -64,6 +64,16 @@ namespace ProjectM.BL
             return data.GetData("GetIdImmo", null);
 
         }
+        /// <summary>
+        /// return all Immobilisation for current month
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetViewImmoForMonth()
+        {
+
+            return data.GetData("GetViewImmoForMonth", null);
+
+        }
 
     }
 }
