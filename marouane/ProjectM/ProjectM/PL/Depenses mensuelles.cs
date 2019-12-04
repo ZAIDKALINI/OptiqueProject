@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
+using System.Globalization;
 using ProjectMarouane.PL;
 
 namespace ProjectM.PL
@@ -25,7 +26,9 @@ namespace ProjectM.PL
             txtN_Dep.Enabled = false;
             try
             {
-                dgvViewImmo.DataSource = immo.GetViewImmoForMonth();
+                
+                if (dep.GetViewDepForMonth() != null)
+                    dgvViewDep.DataSource = dep.GetViewDepForMonth();
                 //
                 if (dep.GetAllDep().Rows.Count != 0)
                 {
@@ -37,6 +40,8 @@ namespace ProjectM.PL
 
 
                 ///
+                if (immo.GetViewImmoForMonth() != null)
+                    dgvViewImmo.DataSource = immo.GetViewImmoForMonth();
                 if (immo.GetImmo() != null)
                 {
                     cb_Choix.DataSource = immo.GetImmo();
@@ -210,12 +215,14 @@ namespace ProjectM.PL
 
         private void Label8_MouseHover(object sender, EventArgs e)
         {
-            label8.BackColor = Color.FromArgb(100, Color.Gray);
+            var lbl = (Label)sender;
+            lbl.BackColor = Color.FromArgb(100, Color.Gray);
         }
 
         private void Label8_MouseLeave(object sender, EventArgs e)
         {
-            label8.BackColor = Color.Transparent;
+            var lbl = (Label)sender;
+            lbl.BackColor = Color.Transparent;
         }
 
         private void Label14_Click(object sender, EventArgs e)
@@ -234,6 +241,14 @@ namespace ProjectM.PL
             catch
             {
                 return;
+            }
+        }
+
+        private void PrixKeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar.ToString() != CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator)
+            {
+                e.Handled = true;
             }
         }
     }

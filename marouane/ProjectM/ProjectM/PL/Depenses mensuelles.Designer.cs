@@ -55,6 +55,7 @@
             this.txt_Desc = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
             this.dgvViewDep = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
             this.Cb_New_Dep = new MaterialSkin.Controls.MaterialCheckBox();
@@ -69,7 +70,6 @@
             this.cb_Choix_Dep = new System.Windows.Forms.ComboBox();
             this.txt_Desc_Dep = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewImmo)).BeginInit();
             this.panel2.SuspendLayout();
@@ -261,6 +261,7 @@
             this.txtPrix_Immo.Name = "txtPrix_Immo";
             this.txtPrix_Immo.Size = new System.Drawing.Size(118, 26);
             this.txtPrix_Immo.TabIndex = 6;
+            this.txtPrix_Immo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PrixKeyPress);
             // 
             // txtN_Immo
             // 
@@ -272,6 +273,7 @@
             // 
             // cb_Choix
             // 
+            this.cb_Choix.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_Choix.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cb_Choix.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_Choix.FormattingEnabled = true;
@@ -320,6 +322,20 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(428, 454);
             this.panel2.TabIndex = 15;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("PaybAck", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.DarkRed;
+            this.label14.Location = new System.Drawing.Point(394, 253);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(23, 20);
+            this.label14.TabIndex = 59;
+            this.label14.Text = "x";
+            this.label14.Click += new System.EventHandler(this.Label14_Click);
+            this.label14.MouseLeave += new System.EventHandler(this.Label8_MouseLeave);
+            this.label14.MouseHover += new System.EventHandler(this.Label8_MouseHover);
             // 
             // dgvViewDep
             // 
@@ -470,6 +486,7 @@
             this.txt_Prix_Dep.Name = "txt_Prix_Dep";
             this.txt_Prix_Dep.Size = new System.Drawing.Size(118, 26);
             this.txt_Prix_Dep.TabIndex = 19;
+            this.txt_Prix_Dep.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PrixKeyPress);
             // 
             // txtN_Dep
             // 
@@ -510,20 +527,6 @@
             this.label12.TabIndex = 15;
             this.label12.Text = "Les depenses";
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("PaybAck", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.DarkRed;
-            this.label14.Location = new System.Drawing.Point(394, 253);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(23, 20);
-            this.label14.TabIndex = 59;
-            this.label14.Text = "x";
-            this.label14.Click += new System.EventHandler(this.Label14_Click);
-            this.label14.MouseLeave += new System.EventHandler(this.Label8_MouseLeave);
-            this.label14.MouseHover += new System.EventHandler(this.Label8_MouseHover);
-            // 
             // Depenses_mensuelles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -531,6 +534,8 @@
             this.ClientSize = new System.Drawing.Size(868, 521);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Depenses_mensuelles";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Depenses_mensuelles";

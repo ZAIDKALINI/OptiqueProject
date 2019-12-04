@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_add_dep = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.pBusinessNumber = new System.Windows.Forms.Panel();
@@ -59,7 +60,7 @@
             this.dtpFrom = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.btn_add_dep = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.pBusinessNumber.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -73,6 +74,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.btn_add_dep);
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.label2);
@@ -80,6 +82,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(314, 78);
             this.panel1.TabIndex = 0;
+            // 
+            // btn_add_dep
+            // 
+            this.btn_add_dep.Font = new System.Drawing.Font("Roboto Cn", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_add_dep.Location = new System.Drawing.Point(3, 1);
+            this.btn_add_dep.Name = "btn_add_dep";
+            this.btn_add_dep.Size = new System.Drawing.Size(45, 22);
+            this.btn_add_dep.TabIndex = 14;
+            this.btn_add_dep.Text = "Add";
+            this.btn_add_dep.UseVisualStyleBackColor = true;
+            this.btn_add_dep.Click += new System.EventHandler(this.Btn_add_dep_Click);
             // 
             // button5
             // 
@@ -379,16 +392,14 @@
             this.label12.TabIndex = 11;
             this.label12.Text = "A";
             // 
-            // btn_add_dep
+            // label9
             // 
-            this.btn_add_dep.Font = new System.Drawing.Font("Roboto Cn", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_add_dep.Location = new System.Drawing.Point(3, 1);
-            this.btn_add_dep.Name = "btn_add_dep";
-            this.btn_add_dep.Size = new System.Drawing.Size(45, 22);
-            this.btn_add_dep.TabIndex = 14;
-            this.btn_add_dep.Text = "Add";
-            this.btn_add_dep.UseVisualStyleBackColor = true;
-            this.btn_add_dep.Click += new System.EventHandler(this.Btn_add_dep_Click);
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(147, 44);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(32, 13);
+            this.label9.TabIndex = 15;
+            this.label9.Text = "0 DH";
             // 
             // Gestion
             // 
@@ -468,5 +479,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button btn_add_dep;
+        private System.Windows.Forms.Label label9;
     }
 }
