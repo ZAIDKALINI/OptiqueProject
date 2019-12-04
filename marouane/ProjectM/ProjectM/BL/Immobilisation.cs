@@ -31,12 +31,13 @@ namespace ProjectM.BL
         /// </summary>
         /// <param name="Num_Imm"></param>
         /// <param name="Prix"></param>
-        public void AddImmoDet(int Num_Imm,Double Prix)
+        public void AddImmoDet(int Num_Imm,Double Prix, DateTime Date_Immo)
         {
-            SqlParameter[] param = new SqlParameter[2];
+            SqlParameter[] param = new SqlParameter[3];
             param[0] = new SqlParameter("@Num_Imm", Num_Imm);
             param[1] = new SqlParameter("@Prix", Prix);
-            
+            param[2] = new SqlParameter("@Date_Immo", Date_Immo);
+
             data.ExcuteCommand("AddImmoDet", param);
 
         }
@@ -52,6 +53,16 @@ namespace ProjectM.BL
 
             return data.GetData("GetImmo", null);
 
+        }
+        /// <summary>
+        /// Delete Immobilisation
+        /// </summary>
+        /// <param name="id">id immo Details</param>
+        public void DeleteImmo(int id)
+        {
+            SqlParameter[] param = new SqlParameter[1];
+            param[0] = new SqlParameter("@id", id);
+            data.ExcuteCommand("DeleteImmo", param);
         }
         /// <summary>
         /// Get new id for new immobilsation

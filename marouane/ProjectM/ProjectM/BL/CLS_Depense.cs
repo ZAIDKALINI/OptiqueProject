@@ -33,12 +33,12 @@ namespace ProjectM.BL
         /// </summary>
         /// <param name="Id_dep">id depense</param>
         /// <param name="Price">Price depense</param>
-        public void AddDepDet(int Id_dep, Double Price)
+        public void AddDepDet(int Id_dep, Double Price,DateTime Date)
         {
-            SqlParameter[] param = new SqlParameter[2];
+            SqlParameter[] param = new SqlParameter[3];
             param[0] = new SqlParameter("@id_Dep", Id_dep);
             param[1] = new SqlParameter("@Price", Price);
-            
+            param[2] = new SqlParameter("@Date", Date);
             data.ExcuteCommand("AddDepDet", param);
 
 
@@ -62,6 +62,22 @@ namespace ProjectM.BL
 
             return data.GetData("GetIdDep", null);
 
+        }
+        public DataTable GetViewDepForMonth()
+        {
+
+            return data.GetData("GetViewDepForMonth", null);
+
+        }
+        /// <summary>
+        /// delete one depense spesific
+        /// </summary>
+        /// <param name="id">id depense details</param>
+        public void DeleteDepense(int id)
+        {
+            SqlParameter[] param = new SqlParameter[1];
+            param[0] = new SqlParameter("@id", id);
+            data.ExcuteCommand("DeleteDepense", param);
         }
     }
 }
