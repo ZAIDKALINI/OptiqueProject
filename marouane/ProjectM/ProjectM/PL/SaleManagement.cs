@@ -368,5 +368,10 @@ namespace ProjectMarouane.PL
                 return;
             }
         }
+
+        private void Panel8_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

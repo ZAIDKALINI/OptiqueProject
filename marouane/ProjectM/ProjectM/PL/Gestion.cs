@@ -29,7 +29,11 @@ namespace ProjectM.PL
 
         
 
-      
+      /// <summary>
+      /// Value dateChanged
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
 
         private void date(object sender, EventArgs e)
         {
@@ -53,7 +57,20 @@ namespace ProjectM.PL
             //label Count Avoire 
             string CountAv = manager.GetTotalAvByDate(from, to).Rows[0][0].ToString();
             _ = CountAv != string.Empty ? lblAvoire.Text = CountAv : lblAvoire.Text = "0";
+            //label DepenseMensuel
+            string Dep = manager.GetDepenseMens(from, to).Rows[0][0].ToString();
+            _ = Dep != string.Empty ? lblDep.Text = Dep : lblDep.Text = "0";
+            // Calcule Rest
+            Reste();
 
+        }
+        /// <summary>
+        /// Calcule Reste
+        /// </summary>
+        void Reste()
+        {
+            var res = manager.getDecimal(lblBN.Text) - manager.getDecimal(lblPriceSalingProduct.Text) - manager.getDecimal(lblDep.Text);
+            lblRest.Text = res.ToString()+" DH";
         }
 
         private void Button4_Click(object sender, EventArgs e)

@@ -34,13 +34,14 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv = new System.Windows.Forms.DataGridView();
-            this.txtTotal = new System.Windows.Forms.TextBox();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.materialSingleLineTextField1 = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.txtTotal = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
+            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgv
@@ -97,47 +98,17 @@
             this.dgv.Size = new System.Drawing.Size(726, 432);
             this.dgv.TabIndex = 57;
             // 
-            // txtTotal
-            // 
-            this.txtTotal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTotal.BackColor = System.Drawing.SystemColors.Control;
-            this.txtTotal.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtTotal.Enabled = false;
-            this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotal.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.txtTotal.Location = new System.Drawing.Point(639, 539);
-            this.txtTotal.MinimumSize = new System.Drawing.Size(4, 20);
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.ReadOnly = true;
-            this.txtTotal.Size = new System.Drawing.Size(114, 20);
-            this.txtTotal.TabIndex = 62;
-            // 
-            // materialLabel1
-            // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(448, 539);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(137, 20);
-            this.materialLabel1.TabIndex = 64;
-            this.materialLabel1.Text = "Total des produits";
-            // 
             // materialLabel2
             // 
             this.materialLabel2.AutoSize = true;
             this.materialLabel2.BackColor = System.Drawing.Color.Transparent;
             this.materialLabel2.Depth = 0;
-            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel2.Location = new System.Drawing.Point(448, 21);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(117, 20);
+            this.materialLabel2.Size = new System.Drawing.Size(111, 19);
             this.materialLabel2.TabIndex = 65;
             this.materialLabel2.Text = "Trouver produit";
             // 
@@ -160,13 +131,42 @@
             this.materialSingleLineTextField1.TabIndex = 66;
             this.materialSingleLineTextField1.TextChanged += new System.EventHandler(this.MaterialSingleLineTextField1_TextChanged);
             // 
-            // panel1
+            // panel8
             // 
-            this.panel1.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.panel1.Location = new System.Drawing.Point(639, 560);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(114, 4);
-            this.panel1.TabIndex = 68;
+            this.panel8.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.panel8.Controls.Add(this.txtTotal);
+            this.panel8.Controls.Add(this.materialLabel3);
+            this.panel8.Location = new System.Drawing.Point(598, 523);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(163, 37);
+            this.panel8.TabIndex = 70;
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.AutoSize = true;
+            this.txtTotal.BackColor = System.Drawing.Color.Transparent;
+            this.txtTotal.Depth = 0;
+            this.txtTotal.Font = new System.Drawing.Font("Roboto", 11F);
+            this.txtTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtTotal.Location = new System.Drawing.Point(143, 10);
+            this.txtTotal.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(0, 19);
+            this.txtTotal.TabIndex = 69;
+            // 
+            // materialLabel3
+            // 
+            this.materialLabel3.AutoSize = true;
+            this.materialLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.materialLabel3.Depth = 0;
+            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel3.Location = new System.Drawing.Point(2, 10);
+            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel3.Name = "materialLabel3";
+            this.materialLabel3.Size = new System.Drawing.Size(132, 19);
+            this.materialLabel3.TabIndex = 68;
+            this.materialLabel3.Text = "Total des ventes  :";
             // 
             // ListeProduit
             // 
@@ -174,12 +174,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(813, 616);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.materialSingleLineTextField1);
             this.Controls.Add(this.materialLabel2);
-            this.Controls.Add(this.materialLabel1);
-            this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.dgv);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ListeProduit";
@@ -187,6 +185,8 @@
             this.Text = "ListeProduit";
             this.Load += new System.EventHandler(this.ListeProduit_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -195,11 +195,11 @@
         #endregion
 
         public System.Windows.Forms.DataGridView dgv;
-        private System.Windows.Forms.TextBox txtTotal;
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox materialSingleLineTextField1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel8;
+        private MaterialSkin.Controls.MaterialLabel txtTotal;
+        private MaterialSkin.Controls.MaterialLabel materialLabel3;
     }
 }

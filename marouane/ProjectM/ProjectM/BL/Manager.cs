@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using ProjectMarouane.DAL;
+using System.Globalization;
 
 namespace ProjectM.BL
 {
@@ -116,6 +117,27 @@ namespace ProjectM.BL
 
             return data.GetData("getDetailsAvoire", param);
 
+        }
+        public DataTable GetDepenseMens(DateTime from, DateTime to)
+        {
+            SqlParameter[] param = new SqlParameter[2];
+            param[0] = new SqlParameter("@from", SqlDbType.Date);
+            param[0].Value = from;
+            param[1] = new SqlParameter("@to", SqlDbType.Date);
+            param[1].Value = to;
+
+            return data.GetData("GetDepenseMens", param);
+
+        }
+        public double getDecimal (string text)
+        {
+            var Array = text.Where(c => char.IsDigit(c) || c.ToString() == CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator).ToArray();
+            string str = null;
+            for (int i=0; i < Array.Length; i++)
+            {
+                str += Array[i];
+            }
+            return Convert.ToDouble(str);
         }
     }
 }

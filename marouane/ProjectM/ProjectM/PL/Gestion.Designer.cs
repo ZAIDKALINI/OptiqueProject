@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblDep = new System.Windows.Forms.Label();
             this.btn_add_dep = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -60,7 +61,7 @@
             this.dtpFrom = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.lblRest = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.pBusinessNumber.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -74,7 +75,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.lblDep);
             this.panel1.Controls.Add(this.btn_add_dep);
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.label2);
@@ -82,6 +83,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(314, 78);
             this.panel1.TabIndex = 0;
+            // 
+            // lblDep
+            // 
+            this.lblDep.AutoSize = true;
+            this.lblDep.Location = new System.Drawing.Point(147, 44);
+            this.lblDep.Name = "lblDep";
+            this.lblDep.Size = new System.Drawing.Size(32, 13);
+            this.lblDep.TabIndex = 15;
+            this.lblDep.Text = "0 DH";
             // 
             // btn_add_dep
             // 
@@ -338,6 +348,7 @@
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel9.Controls.Add(this.lblRest);
             this.panel9.Controls.Add(this.label10);
             this.panel9.Location = new System.Drawing.Point(10, 407);
             this.panel9.Name = "panel9";
@@ -392,14 +403,14 @@
             this.label12.TabIndex = 11;
             this.label12.Text = "A";
             // 
-            // label9
+            // lblRest
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(147, 44);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(32, 13);
-            this.label9.TabIndex = 15;
-            this.label9.Text = "0 DH";
+            this.lblRest.AutoSize = true;
+            this.lblRest.Location = new System.Drawing.Point(139, 40);
+            this.lblRest.Name = "lblRest";
+            this.lblRest.Size = new System.Drawing.Size(32, 13);
+            this.lblRest.TabIndex = 5;
+            this.lblRest.Text = "0 DH";
             // 
             // Gestion
             // 
@@ -479,6 +490,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button btn_add_dep;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblDep;
+        private System.Windows.Forms.Label lblRest;
     }
 }
