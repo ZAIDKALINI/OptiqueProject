@@ -129,6 +129,11 @@ namespace ProjectM.BL
             return data.GetData("GetDepenseMens", param);
 
         }
+        /// <summary>
+        /// Get just number from any string
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
         public double getDecimal (string text)
         {
             var Array = text.Where(c => char.IsDigit(c) || c.ToString() == CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator).ToArray();
