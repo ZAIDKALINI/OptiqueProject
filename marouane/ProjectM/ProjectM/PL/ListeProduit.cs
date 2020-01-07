@@ -24,13 +24,17 @@ namespace ProjectM.PL
             try
             {
                 dgv.DataSource = data.GetData("GetAllProduct", null);
-                txtTotal.Text = dgv.RowCount.ToString();
+                txtTotal.Text = TotalSaleProduct().ToString();
             }
             catch
             {
                 return;
             }
             
+        }
+        int TotalSaleProduct()
+        {
+            return (from DataGridViewRow r in dgv.Rows select (int)r.Cells["Qte"].Value).Sum();
         }
 
         private void ListeProduit_Load(object sender, EventArgs e)
@@ -48,7 +52,7 @@ namespace ProjectM.PL
             param[0] = new SqlParameter("@search", SqlDbType.NVarChar, 100);
             param[0].Value = materialSingleLineTextField1.Text;
             dgv.DataSource = data.GetData("getSpesificProd", param);
-            txtTotal.Text = dgv.RowCount.ToString();
+            txtTotal.Text = TotalSaleProduct().ToString();
         }
     }
 }

@@ -9,12 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectM.BL;
 using ProjectM.PL;
+using MaterialSkin.Controls;
+using System.IO;
+using System.util;
 
 namespace ProjectMarouane.PL
 {
-    public partial class Buy : Form
+    public partial class Buy : MaterialForm
     {
-        DataColumn [] dc = new DataColumn[7];
+        DataColumn [] dc = new DataColumn[6];
         DataTable dt = new DataTable();
         DAL.DataAccessLayer data = new DAL.DataAccessLayer();
         public Buy()
@@ -26,9 +29,17 @@ namespace ProjectMarouane.PL
             dc[3] = new DataColumn("Total TTC");
             dc[4] = new DataColumn("TV");
             dc[5] = new DataColumn("Total HT");
+            DataGridViewImageColumn image = new DataGridViewImageColumn();
+            image.Image = ProjectM.Properties.Resources.remove;
+            image.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            image.Name = "image";
 
+            
             dt.Columns.AddRange(dc);
             dataGridView1.DataSource = dt;
+            dataGridView1.Columns.Add(image);
+            dataGridView1.Columns["image"].Width = 30;
+            dataGridView1.Columns["image"].Selected = false;
             btn_new.Enabled = true;
             btn_add.Enabled = false;
             rb_Yes.Checked = true;
@@ -36,7 +47,7 @@ namespace ProjectMarouane.PL
 
         private void Buy_Load(object sender, EventArgs e)
         {
-           
+            
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -83,11 +94,11 @@ namespace ProjectMarouane.PL
                 dt.Rows.Add(txtIdP.Text, txtNomP.Text, txtQte.Text, txtTTC.Text, txtTva.Text, txtTHT.Text ); 
                 txtQte.Clear(); txtTHT.Clear(); txtTva.Clear(); txtTTC.Clear(); txtIdP.Clear(); txtNomP.Clear();
                 txtSum.Text=(from DataGridViewRow r in dataGridView1.Rows
-                             where r.Cells[5].FormattedValue.ToString()!=string.Empty
-                             select Convert.ToDouble(r.Cells[5].FormattedValue)).Sum().ToString();
+                             where r.Cells["Total HT"].FormattedValue.ToString()!=string.Empty
+                             select Convert.ToDouble(r.Cells["Total HT"].FormattedValue)).Sum().ToString();
                 txtSumTTC.Text = (from DataGridViewRow r in dataGridView1.Rows
-                                  where r.Cells[3].FormattedValue.ToString() != string.Empty
-                                  select Convert.ToDouble(r.Cells[3].FormattedValue)).Sum().ToString();
+                                  where r.Cells["Total TTC"].FormattedValue.ToString() != string.Empty
+                                  select Convert.ToDouble(r.Cells["Total TTC"].FormattedValue)).Sum().ToString();
             }
         }
         private string GetMatricule(string number)
@@ -131,12 +142,12 @@ namespace ProjectMarouane.PL
         {
             try
             {
-                txtIdP.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-                txtNomP.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-                txtQte.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-                txtTTC.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-                txtTva.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
-                txtTHT.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
+                txtIdP.Text = dataGridView1.CurrentRow.Cells["idProduct"].Value.ToString();
+                txtNomP.Text = dataGridView1.CurrentRow.Cells["Nom"].Value.ToString();
+                txtQte.Text = dataGridView1.CurrentRow.Cells["Qte"].Value.ToString();
+                txtTTC.Text = dataGridView1.CurrentRow.Cells["Total TTC"].Value.ToString();
+                txtTva.Text = dataGridView1.CurrentRow.Cells["TV"].Value.ToString();
+                txtTHT.Text = dataGridView1.CurrentRow.Cells["Total HT"].Value.ToString();
 
                 dataGridView1.Rows.RemoveAt(dataGridView1.CurrentRow.Index);
             }
@@ -151,11 +162,11 @@ namespace ProjectMarouane.PL
             if (dataGridView1.Rows.Count > 0)
             {
                 txtSum.Text = (from DataGridViewRow r in dataGridView1.Rows
-                               where r.Cells[5].FormattedValue.ToString() != string.Empty
-                               select Convert.ToDouble(r.Cells[5].FormattedValue)).Sum().ToString();
+                               where r.Cells["Total HT"].FormattedValue.ToString() != string.Empty
+                               select Convert.ToDouble(r.Cells["Total HT"].FormattedValue)).Sum().ToString();
                 txtSumTTC.Text = (from DataGridViewRow r in dataGridView1.Rows
-                                  where r.Cells[3].FormattedValue.ToString() != string.Empty
-                                  select Convert.ToDouble(r.Cells[3].FormattedValue)).Sum().ToString();
+                                  where r.Cells["Total TTC"].FormattedValue.ToString() != string.Empty
+                                  select Convert.ToDouble(r.Cells["Total TTC"].FormattedValue)).Sum().ToString();
             }
             else
             {
@@ -180,16 +191,18 @@ namespace ProjectMarouane.PL
             }
             for(int i =0; i < dataGridView1.RowCount; i++)
             {
-                bo.addDetBuying(Convert.ToInt32(txtNumOB.Text), Convert.ToInt32(dataGridView1.Rows[i].Cells[0].Value), Convert.ToInt32(dataGridView1.Rows[i].Cells[2].Value), Convert.ToInt32(dataGridView1.Rows[i].Cells[5].Value),
-                    Convert.ToDouble(dataGridView1.Rows[i].Cells[4].Value), Convert.ToDouble(dataGridView1.Rows[i].Cells[3].Value));
+            
+
+                bo.addDetBuying(Convert.ToInt32(txtNumOB.Text), Convert.ToInt32(dataGridView1.Rows[i].Cells["idProduct"].Value), Convert.ToInt32(dataGridView1.Rows[i].Cells["Qte"].Value), Convert.ToInt32(dataGridView1.Rows[i].Cells["Total HT"].Value),
+                    Convert.ToDouble(dataGridView1.Rows[i].Cells["TV"].Value), Convert.ToDouble(dataGridView1.Rows[i].Cells["Total TTC"].Value));
                 // update qte product
-                prd.EditQteProduct(Convert.ToInt32(dataGridView1.Rows[i].Cells[0].Value), Convert.ToInt32(dataGridView1.Rows[i].Cells[2].Value));
+                prd.EditQteProduct(Convert.ToInt32(dataGridView1.Rows[i].Cells["idProduct"].Value), Convert.ToInt32(dataGridView1.Rows[i].Cells["Qte"].Value));
             }
             
             MessageBox.Show("Vous avez ajoutez votre achats avect succées", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             Effacer();
-            Close();
+           
 
         }
         void Effacer()
@@ -307,6 +320,32 @@ namespace ProjectMarouane.PL
         {
             Product p = new Product();
             p.ShowDialog();
+        }
+
+        private void Btn_new_Click_1(object sender, EventArgs e)
+        {
+            txtNumOB.Text = GetMatricule(data.GetData("getNumOB", null).Rows[0][0].ToString());
+            btn_new.Enabled = false;
+            btn_add.Enabled = true;
+        }
+
+        private void DataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                if (e.ColumnIndex == dataGridView1.Columns["image"].Index)
+                {
+                    Confirmation cfr = new Confirmation();
+                    if (cfr.ShowDialog() == DialogResult.OK)
+                    {
+                        dataGridView1.Rows.RemoveAt(dataGridView1.CurrentRow.Index);
+                    }
+                }
+            }
+            catch
+            {
+                return;
+            }
         }
     }
 }

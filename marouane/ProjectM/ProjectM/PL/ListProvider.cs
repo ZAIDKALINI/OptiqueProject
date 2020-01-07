@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectMarouane.DAL;
 using System.Data.SqlClient;
+using MaterialSkin.Controls;
 
 namespace ProjectM.PL
 {
-    public partial class ListProvider : Form
+    public partial class ListProvider : MaterialForm
     {
         
        DataAccessLayer data = new DataAccessLayer();
@@ -41,6 +42,11 @@ namespace ProjectM.PL
         private void Dgv_lstProvider_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             Close();
+        }
+
+        private void ListProvider_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
